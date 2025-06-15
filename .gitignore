@@ -1,0 +1,63 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyTorch-specific
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Model artifacts and logs
+runs/
+logs/
+tensorboard/
+wandb/
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Test artifacts
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.cache/
+nosetests.xml
+*.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs/editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# IPython
+profile_default/
+ipython_config.py
