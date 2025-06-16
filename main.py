@@ -1,5 +1,6 @@
 import torch
 from src.models.densenet import DenseNet
+<<<<<<< HEAD
 import torchvision
 from torchvision.transforms import transforms
 import torch
@@ -64,3 +65,12 @@ for epoch in range(EPOCHS):
         loss.backward()
         optimizer.step()
     print(f"Epoch {epoch + 1}, Loss: {loss_local / n:.4f}")
+=======
+
+
+x = torch.randn(1, 3, 32, 32).to("cuda")
+model = DenseNet(3, 16).to("cuda")
+
+out = model(x)
+print(out)
+>>>>>>> faf4a1b (Added general infrastructure and some tests)
