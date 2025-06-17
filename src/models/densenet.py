@@ -16,6 +16,7 @@ class DenseNet(nn.Module):
         drop_prob: float = 0.0,
     ):
         super().__init__()
+        self.num_classes = num_classes # Save for downstream usage
         self.stem = nn.Sequential(
             nn.Conv2d(
                 in_channels,
@@ -52,6 +53,9 @@ class DenseNet(nn.Module):
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.classifier = nn.Linear(num_features, num_classes)
 
+        # From official implementation
+        # https://github.com/gpleiss/efficient_densenet_pytorch/blob/master/models/densenet.py
+        # https://github.com/pytorch/vision/blob/main/torchvision/models/densenet.py
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight)

@@ -1,0 +1,16 @@
+defaults:
+  - dataset: cifar10
+  - model: densenet
+  - optimizer: sgd
+  - scheduler: cosine
+  - trainer: default
+  - training: default
+  - experiment: default
+  - logger: wandb
+  - callbacks: default
+  - hydra: default
+  - _self_
+
+seed: null
+debug: true
+ckpt_path: null
