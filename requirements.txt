@@ -1,0 +1,10 @@
+torch>=2.0
+torchvision
+lightning>=2.0  # lightning.pytorch
+hydra-core
+omegaconf
+wandb
+scipy
+torchmetrics
+pre-commit  # for .pre-commit-config.yaml support
+numpy
