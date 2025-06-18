@@ -1,0 +1,10 @@
+# @package _global_
+experiment:
+  name: cifar10_training
+  tags: ["cifar10", "densenet", "paper"]
+
+trainer:
+  max_epochs: 300
+
+model:
+  drop_prob: 0.2

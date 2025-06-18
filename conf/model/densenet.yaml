@@ -1,6 +1,6 @@
 _target_: src.models.densenet.DenseNet
 in_channels: 3
-growth_rate: 16
+growth_rate: 12
 block_config: [32, 32, 32]
 num_classes: 10
 bottleneck_size: 4
