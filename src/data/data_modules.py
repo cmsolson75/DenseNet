@@ -166,12 +166,12 @@ class SVHNDataModule(L.LightningDataModule):
             ]
         )
     def prepare_data(self):
-        SVHN(self.data_dir, train=True, download=True)
-        SVHN(self.data_dir, train=False, download=True)
+        SVHN(self.data_dir, split="train", download=True)
+        SVHN(self.data_dir, split="test", download=True)
 
     def setup(self, stage=None):
-        self.train_dataset = SVHN(self.data_dir, train=True, transform=self.transform_train)
-        self.val_dataset = SVHN(self.data_dir, train=False, transform=self.transform_test)
+        self.train_dataset = SVHN(self.data_dir, split="train", transform=self.transform_train)
+        self.val_dataset = SVHN(self.data_dir, split="test", transform=self.transform_test)
 
     def train_dataloader(self):
         return DataLoader(

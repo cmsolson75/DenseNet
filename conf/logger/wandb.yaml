@@ -1,5 +1,5 @@
 _target_: lightning.pytorch.loggers.WandbLogger
-project: resnet_experiments
+project: densenet
 name: ${now:%Y-%m-%d}_${experiment.name}
 tags: ${experiment.tags}
 log_model: true

@@ -8,3 +8,4 @@ scipy
 torchmetrics
 pre-commit  # for .pre-commit-config.yaml support
 numpy
+pytest

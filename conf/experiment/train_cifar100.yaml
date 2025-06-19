@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - override /dataset: cifar100
+
+experiment:
+  name: cifar100_training
+  tags: ["cifar100", "densenet", "paper"]
+
+trainer:
+  max_epochs: 300
+
+model:
+  drop_prob: 0.2
+  block_config: [16, 16, 16]
+  num_classes: 100

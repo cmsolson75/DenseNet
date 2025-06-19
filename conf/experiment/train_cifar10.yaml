@@ -3,6 +3,9 @@ experiment:
   name: cifar10_training
   tags: ["cifar10", "densenet", "paper"]
 
+defaults:
+  - override /dataset: cifar100
+
 trainer:
   max_epochs: 300
 

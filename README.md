@@ -26,11 +26,22 @@ Paper implementation
     * I MADE A MISTAKE: I need to do this again with a dense size of 16, if its 32 then we get a densenet 190
 
 
+To validate config
+- `pytest`
+
 
 EXPERIMENTS
 * DenseNet-BC (k=12): 100 layers (16 per block chunk)
     * C10+
+        * Got an val error of 5.18, this is better than the paper, the only difference is Cosine Annealing.
+        * Replicate my results `python train.py experiment=train_cifar10`
     * C100+
+        * Batch size = 256 (speed up training)
+        * Got a val error of 27.76 this is worse than the paper by 3.34, I would assume this difference is from the batch size being bigger in my training run, leading to less updates.
+        * Replicate my results `python train.py experiment=train_cifar100`
     * SVHN
+        * Batch Size = 256
+        * Got val error of 3.592 - this is higher than the paper, I think this ties back to the batch size.
+        * Replicate my results `python train.py experiment=train_svhn`
 * Use CosineAnnealingLR
 * 300 Epochs

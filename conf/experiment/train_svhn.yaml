@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - override /dataset: svhn
+
+experiment:
+  name: svhn_training
+  tags: ["svhn", "densenet", "paper"]
+
+trainer:
+  max_epochs: 40
+
+model:
+  drop_prob: 0.2
+  block_config: [16, 16, 16]
+  num_classes: 10
