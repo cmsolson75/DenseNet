@@ -8,3 +8,4 @@ trainer:
 
 model:
   drop_prob: 0.2
+  block_config: [16, 16, 16]
