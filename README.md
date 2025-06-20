@@ -47,21 +47,30 @@ pytest
 🧪 Testing
 
 PyTest covers:
-	•	Output shapes
-	•	Forward path validity
-	•	Loss decrease behavior
-	•	Config + training object instantiation
-	•	Smoke training run (via test_dataset)
+
+- Output shapes
+- Forward path validity
+- Loss decrease behavior
+- Config + training object instantiation
+- Smoke training run (via `test_dataset`)
 
 ⚙️ Setup
 
+```bash
 pip install -r requirements.txt
 pre-commit install
+```
 
 ## ⚠️ Known Issues
 
 - Optuna sweeps are currently non-functional. Debugging was attempted and deferred.
 
-🔗 References
-	•	torchvision DenseNet
-	•	Original Paper: Densely Connected Convolutional Networks
+## 🔗 References
+
+- [torchvision DenseNet (official)](https://github.com/pytorch/vision/blob/main/torchvision/models/densenet.py)
+- Huang, Gao, et al. *Densely Connected Convolutional Networks*. [arXiv:1608.06993](https://arxiv.org/abs/1608.06993)
+- PyTorch Lightning Documentation: https://lightning.ai/docs/pytorch/stable/
+- Hydra Configuration Framework: https://hydra.cc/docs/intro/
+- Optuna: https://optuna.org/
+- Weights & Biases: https://wandb.ai/site
+- Cosine Annealing LR: https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html
