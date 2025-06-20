@@ -9,7 +9,6 @@ This repository implements a reproducible version of DenseNet-BC using PyTorch L
 - Config-driven training with Hydra
 - Logging via Weights & Biases
 - Training via PyTorch Lightning
-- (⚠️ Not functional) Hyperparameter sweeps via Optuna
 - CosineAnnealingLR scheduler
 - Automated model checkpointing (top-k + last)
 - Testing via PyTest:
@@ -60,10 +59,6 @@ PyTest covers:
 pip install -r requirements.txt
 pre-commit install
 ```
-
-## ⚠️ Known Issues
-
-- Optuna sweeps are currently non-functional. Debugging was attempted and deferred.
 
 ## 🔗 References
 
