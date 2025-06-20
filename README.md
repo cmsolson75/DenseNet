@@ -1,47 +1,67 @@
-# DenseNet-BC implementation
-Project quality
-- Add simple PyTest setup with ini
-    - Shape tests
-    - Forward pass sanity
-    - Loss Reduction
-    - Config instantiation
-    - Training loop smoke test
-- Add pre commit
-- Add Hydra
-- Add Optuna
-- Add W&B
-- Add PTL
+# DenseNet-BC for CIFAR10/100 and SVHN
 
+This repository implements a reproducible version of DenseNet-BC using PyTorch Lightning. Configuration is managed via Hydra, with integrated support for Optuna sweeps and Weights & Biases logging.
 
-References
-- https://github.com/pytorch/vision/blob/main/torchvision/models/densenet.py
+## ✅ Features
 
+- DenseNet-BC implementation (k=12)
+- Dataset support: CIFAR-10, CIFAR-100, SVHN
+- Config-driven training with Hydra
+- Logging via Weights & Biases
+- Training via PyTorch Lightning
+- (⚠️ Not functional) Hyperparameter sweeps via Optuna
+- CosineAnnealingLR scheduler
+- Automated model checkpointing (top-k + last)
+- Testing via PyTest:
+  - Shape tests
+  - Forward-pass sanity checks
+  - Loss reduction validation
+  - Config instantiation
+  - Smoke test for training loop
+- Pre-commit configuration
 
-Paper implementation
-* DenseNet-BC (k = 12)
-    * CIFAR10
-    * I had more params then they did with there implementation, must have mixed up layers, I did 3 dense blocks each with 32 dense layers. That creates 96 layers, and if you add the stem and classification head then you get 100 layuers, maybe Pytorch is different.
-    * They have 0.8M params, I have 3.5M
-    * My error rate was 4.54 vs the papers 4.51, this is in the margen of error
-    * I MADE A MISTAKE: I need to do this again with a dense size of 16, if its 32 then we get a densenet 190
+## 🧪 Experiments
 
+| Dataset   | Configuration                | Val Error (%) | Notes                                              |
+|-----------|------------------------------|---------------|----------------------------------------------------|
+| CIFAR10   | DenseNet-BC (k=12, 100L)      | 5.18          | Improved over paper (4.51%) using Cosine LR       |
+| CIFAR10   | DenseNet-BC (k=12, 190L)      | 4.54          | Overparameterized (3.5M vs 0.8M), matches paper    |
+| CIFAR100  | DenseNet-BC (k=12, 100L)      | 27.76         | Worse than paper by ~3.3%; batch size = 256       |
+| SVHN      | DenseNet-BC (k=12, 100L)      | 3.592         | Higher than paper; possibly due to batch size     |
 
-To validate config
-- `pytest`
+> ⚠️ Note: 190-layer run used 32 layers per block, not 16. The correct config for 100 layers is `[16, 16, 16]`.
 
+## 🧰 Usage
 
-EXPERIMENTS
-* DenseNet-BC (k=12): 100 layers (16 per block chunk)
-    * C10+
-        * Got an val error of 5.18, this is better than the paper, the only difference is Cosine Annealing.
-        * Replicate my results `python train.py experiment=train_cifar10`
-    * C100+
-        * Batch size = 256 (speed up training)
-        * Got a val error of 27.76 this is worse than the paper by 3.34, I would assume this difference is from the batch size being bigger in my training run, leading to less updates.
-        * Replicate my results `python train.py experiment=train_cifar100`
-    * SVHN
-        * Batch Size = 256
-        * Got val error of 3.592 - this is higher than the paper, I think this ties back to the batch size.
-        * Replicate my results `python train.py experiment=train_svhn`
-* Use CosineAnnealingLR
-* 300 Epochs
+Train a model with:
+
+```bash
+python train.py experiment=train_cifar10
+python train.py experiment=train_cifar100
+python train.py experiment=train_svhn
+```
+Validate configs with:
+```
+pytest
+```
+🧪 Testing
+
+PyTest covers:
+	•	Output shapes
+	•	Forward path validity
+	•	Loss decrease behavior
+	•	Config + training object instantiation
+	•	Smoke training run (via test_dataset)
+
+⚙️ Setup
+
+pip install -r requirements.txt
+pre-commit install
+
+## ⚠️ Known Issues
+
+- Optuna sweeps are currently non-functional. Debugging was attempted and deferred.
+
+🔗 References
+	•	torchvision DenseNet
+	•	Original Paper: Densely Connected Convolutional Networks
