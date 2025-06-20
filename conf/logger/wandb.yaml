@@ -1,5 +1,5 @@
 _target_: lightning.pytorch.loggers.WandbLogger
 project: densenet
-name: ${now:%Y-%m-%d}_${experiment.name}
+name: ${now:%Y-%m-%d}_${experiment.name}_trial_${oc.env:HYDRA_SWEEP_RUN_ID,"0"}
 tags: ${experiment.tags}
 log_model: true

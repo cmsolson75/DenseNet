@@ -1,7 +1,7 @@
 # @package _global_
 
 defaults:
-  - override /hydra/sweeper: optuna
+  - override /hydra/sweeper: optuna_sweeper
   - override /dataset: cifar10
   - override /trainer: default
   - override /model: densenet
@@ -10,25 +10,5 @@ experiment:
   name: cifar10_optuna
   tags: ["optuna", "cifar10", "sweep"]
 
-hydra:
-  sweeper:
-    direction: minimize
-    n_trials: 50
-    sampler:
-      _target_: optuna.samplers.TPESampler
-      seed: 42
-
-model:
-  growth_rate: choice(12, 16, 24)
-  drop_prob: choice(0.0, 0.1, 0.2)
-  compression_factor: choice(0.4, 0.5, 0.6)
-
-optimizer:
-  lr: loguniform(1e-4, 1e-1)
-  weight_decay: loguniform(1e-6, 1e-3)
-
-dataset:
-  batch_size: choice(64, 128, 256)
-
 trainer:
-  max_epochs: 40
+  max_epochs: 10

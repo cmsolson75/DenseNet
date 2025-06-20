@@ -1,0 +1,20 @@
+# @package _global_
+
+defaults:
+  - override /dataset: cifar10
+  - override /trainer: default
+  - override /model: densenet
+
+experiment:
+  name: cifar10_memory_test
+  tags: ["benchmark", "cifar10", "sweep"]
+
+trainer:
+  max_epochs: 40
+
+dataset:
+  batch_size: 256
+
+model:
+  compression_factor: 0.6
+  growth_rate: 24
