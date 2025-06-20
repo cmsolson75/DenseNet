@@ -9,6 +9,7 @@ defaults:
   - logger: wandb
   - callbacks: default
   - hydra: default
+  - hydra/sweeper: optuna
   - _self_
 
 seed: null
